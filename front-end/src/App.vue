@@ -39,7 +39,7 @@
     <!--头部结束-->
     <!--导航栏开始-->
     <ul id="nav">
-      <li v-for="nav in navlist">
+      <li v-for="nav in navlist" :key="nav">
         <a href="#">
           {{ nav.txt }}
         </a>
@@ -58,13 +58,13 @@
             <a href="http://m.youku.com" class="p-link"></a>
           </div>
           <div class="p-metadata">
-              <div class="p-title"><军师联盟>司马懿柏灵筠生死较量 醋缸上线画风跑偏</div>
+              <div class="p-title">{{ pinfo.title }}</div>
               <div class="p-desc">
-                <span class="p-check">更新至41</span>
+                <span class="p-check">{{ pinfo.check }}</span>
                 <i class="ico-stat-play"></i>
-                <span class="p-num">52.3亿</span>
+                <span class="p-num">{{ pinfo.playnum }}</span>
                 <i class="ico-stat-comment"></i>
-                <span class="p-num">10.1万</span>
+                <span class="p-num">{{ pinfo.commentnum }}</span>
               </div>
           </div>
       </div>
@@ -172,6 +172,13 @@ export default {
       { txt: '体育' },
       { txt: '直播' },
       { txt: '历史' }
+      ],
+      pinfo: [
+      { title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃' },
+      { playnum: '3,718万' },
+      { commentnum: '3,146' },
+      { videotime: '97:59' },
+      { check: '更新至46' }
       ]
     }
   }

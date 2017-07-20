@@ -54,7 +54,7 @@
             <i class="ico-isvip"></i>
           </div>
           <div class="thumb-pic">
-            <img src="http://r1.ykimg.com/050C000059609755ADC0AE17B902E817" class="thumb-real-pic">
+            <img :src="pinfo.src" class="thumb-real-pic">
             <a href="http://m.youku.com" class="p-link"></a>
           </div>
           <div class="p-metadata">
@@ -71,91 +71,31 @@
       <!--幻灯片结束-->
       <!--推荐视频开始-->
       <div class="v-recommend">
-        <div class="v-item">
-          <img src="http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE">
+        <div class="v-item" v-for="item in vinfo" :key="item">
+          <img :src="item.src">
           <div class="v-info">
-            <div class="v-title">[快男]养鸡带假发变身</div>
+            <div class="v-title">{{ item.title }}</div>
             <div class="v-desc">
-              <span class="v-status">更新至46</span>
+              <span class="v-check">{{ item.check }}</span>
               <i class="ico-stat-play"></i>
-              <span class="v-num">播放</span>
+              <span class="v-num">{{ item.playnum }}</span>
               <i class="ico-stat-comment"></i>
-              <span class="v-num">评论</span>
+              <span class="v-num">{{ item.commentnum }}</span>
             </div>
           </div>
         </div>
-        <div class="v-item">
-          <img src="http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE">
-          <div class="v-info">
-            <div class="v-title">[快男]养鸡带假发变身</div>
-            <div class="v-desc">
-              <i class="ico-stat-play"></i>
-              <span class="v-num">播放</span>
-              <i class="ico-stat-comment"></i>
-              <span class="v-num">评论</span>
-            </div>
-          </div>
-        </div>
-        <div class="v-item">
-          <img src="http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE">
-          <div class="v-info">
-            <div class="v-title">[快男]养鸡带假发变身</div>
-            <div class="v-desc">
-              <i class="ico-stat-play"></i>
-              <span class="v-num">播放</span>
-              <i class="ico-stat-comment"></i>
-              <span class="v-num">评论</span>
-            </div>
-          </div>
-        </div>
-        <div class="v-item">
-          <img src="http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE">
-          <div class="v-info">
-            <div class="v-title">[快男]养鸡带假发变身</div>
-            <div class="v-desc">
-              <i class="ico-stat-play"></i>
-              <span class="v-num">播放</span>
-              <i class="ico-stat-comment"></i>
-              <span class="v-num">评论</span>
-            </div>
-          </div>
-        </div>
-        <div class="v-item">
-          <img src="http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE">
-          <div class="v-info">
-            <div class="v-title">[快男]养鸡带假发变身</div>
-            <div class="v-desc">
-              <i class="ico-stat-play"></i>
-              <span class="v-num">播放</span>
-              <i class="ico-stat-comment"></i>
-              <span class="v-num">评论</span>
-            </div>
-          </div>
-        </div>
-        <div class="v-item">
-          <img src="http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE">
-          <div class="v-info">
-            <div class="v-title">[快男]养鸡带假发变身</div>
-            <div class="v-desc">
-              <i class="ico-stat-play"></i>
-              <span class="v-num">播放</span>
-              <i class="ico-stat-comment"></i>
-              <span class="v-num">评论</span>
-            </div>
-          </div>
-        </div>
-      </div>
       <!--推荐视频结束-->
     </div>
     <!--右下角固定工具栏-->
     <div class="rsidebar">
       <ul>
         <li><a ><i class="ico-gotop"></i></a></li>
-        <li><a><i class="ico-feedback"></i></a></li>
         <li><a><i class="ico-user"></i></a></li> 
+        <li><a><i class="ico-feedback"></i><span>反馈</span></a></li>
       </ul>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -164,25 +104,91 @@ export default {
   data () {
     return {
       navlist: [
-      { txt: '首页' },
-      { txt: '娱乐' },
-      { txt: '文化' },
-      { txt: '纪实' },
-      { txt: '财经' },
-      { txt: '体育' },
-      { txt: '直播' },
-      { txt: '历史' }
+        { txt: '首页' },
+        { txt: '会员' },
+        { txt: '直播' },
+        { txt: '剧集' },
+        { txt: '电影' },
+        { txt: '综艺' },
+        { txt: '音乐' },
+        { txt: '动漫' },
+        { txt: '少儿' },
+        { txt: '资讯' },
+        { txt: '文化' },
+        { txt: '纪实' },
+        { txt: '财经' },
+        { txt: '体育' },
+        { txt: '汽车' },
+        { txt: '科技' },
+        { txt: '游戏' },
+        { txt: '高校' },
+        { txt: '旅游' },
+        { txt: '时尚' },
+        { txt: '亲子' },
+        { txt: '教育' }
       ],
-      pinfo: [
-      { title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃' },
-      { playnum: '3,718万' },
-      { commentnum: '3,146' },
-      { videotime: '97:59' },
-      { check: '更新至46' }
+      pinfo: {
+        src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+        title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+        playnum: '3,718万',
+        commentnum: '3,146',
+        videotime: '97:59',
+        check: '更新至46'
+      },
+      vinfo: [
+        {
+          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+          playnum: '3,718万',
+          commentnum: '3,146',
+          videotime: '97:59',
+          check: '更新至46'
+        },
+        {
+          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+          playnum: '3,718万',
+          commentnum: '3,146',
+          videotime: '97:59',
+          check: '更新至46'
+        },
+        {
+          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+          playnum: '3,718万',
+          commentnum: '3,146',
+          videotime: '97:59',
+          check: '更新至46'
+        },
+        {
+          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+          playnum: '3,718万',
+          commentnum: '3,146',
+          videotime: '97:59',
+          check: '更新至46'
+        },
+        {
+          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+          playnum: '3,718万',
+          commentnum: '3,146',
+          videotime: '97:59',
+          check: '更新至46'
+        },
+        {
+          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
+          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
+          playnum: '3,718万',
+          commentnum: '3,146',
+          videotime: '97:59',
+          check: '更新至46'
+        }
       ]
     }
   }
 }
+
 </script>
 
 <style>
@@ -331,7 +337,7 @@ a {
 
 /*菜单栏*/
 #nav {
-  border-bottom: 4px solid #ccc;
+  border-bottom: 3px solid #ccc;
   overflow-x: auto;
   white-space: nowrap;
   margin:0 10px;
@@ -421,29 +427,34 @@ a {
   padding-left: 10px;
   padding-right:10px;
   margin-bottom:15px;
+  position:relative;
 }
 
 .v-item img{
-  max-width: 100%;
+  width: 100%;
   
 }
 
 .v-info{
   background-color: #ddd;
-  margin-top:-2px;
+  margin-top:-4px;
   max-width: 100%;
+  padding: 4px;
 }
 
-.v-status{
+.v-check{
   font-size: 12px;
   color:#fff;
   position: absolute;
-  bottom:10px;
+  bottom:48px;
   left:15px;
 }
 
 .v-title{
   font-size:14px;
+  white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .v-num{
@@ -456,7 +467,6 @@ a {
   position: fixed;
   right:10px;
   bottom: 50px;
-  background-color: 
 }
 
 .rsidebar li{
@@ -470,6 +480,12 @@ a {
   height: 50px;
   background-color: rgba(0,0,0,0.5);
   border-radius: 5px;
+}
+
+.rsidebar li span {
+  display: block;
+  color:#fff;
+  font-size:14px;
 }
 
 /*sidebar小图标样式*/
@@ -497,6 +513,4 @@ a {
   height: 24px;
   background-position: 0 -40px;
 }
-
 </style>
-

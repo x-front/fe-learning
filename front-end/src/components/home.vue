@@ -19,9 +19,9 @@
             <i class="ico-search"></i>
             <span><a href="#">搜索</a></span>
           </div>
-          <div class="handle yk-center">
+          <div class="handle yk-center" @click="login">
             <i class="ico-user"></i>
-            <span><a href="#">登录</a></span>
+            <span>登录</span>
           </div>
         </div>
       </div>
@@ -169,6 +169,9 @@ export default {
   methods: {
     search () {
       alert('What are looking for?')
+    },
+    login () {
+      this.$router.push({path: '/login'})
     }
   }
 }

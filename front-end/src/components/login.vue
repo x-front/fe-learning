@@ -2,7 +2,7 @@
     <div class="body-wrap">
         <!--手机快捷登录顶部-->
         <div class="header-wrap">
-            <a class="goback"> < </a>  <!--官网是怎么实现的图案 -->
+            <a class="goback"></a>
             <div class="title">手机快捷登录</div>
         </div>
         <!--顶部结束  -->
@@ -13,6 +13,7 @@
                     <div class="select-country">
                         <span class="text-countryname">中国大陆</span>
                         <span class="text-countrycode">+86</span>
+                        <span class="btn-open-selectcountry"></span>
                     </div> <!--国家选择-->
                 </li>
                 <li><input type="tel" placeholder="手机号码" name="cell" required></li>
@@ -23,7 +24,21 @@
             <button type="button" class="btn-normallogin">账号登录</button>
         </form>
         <!--手机登录模块结束  -->
-        <div class="share-wrap"</div> 
+        <div class="footer-wrap">
+            <div class="share-wrap">
+                <div class="third-sharelist">
+                    <ul>
+                        <li><icon name="weibo" scale="20"></icon></li>
+                        <li><icon name="qq" scale="20"></icon></li>
+                        <li><icon name="wechat" scale="20"></icon></li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <span class="text-gray">还没有账号？</span>
+                    <span class="link-signin">立即注册</span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -32,13 +47,26 @@
 </script>
 
 <style>
+.text-gray{
+    color:#ccc;
+}
 *:focus {
     outline: none;
 }
 .goback {
+    display: inline-block;
+    width:15px;
+    height:15px;
+    border-top:1px solid #333;
+    border-right:1px solid #333;
     position:absolute;
-    top:10px;
-    left:5px;
+    top:2%;
+    left:5%;
+    transform:rotate(-135deg);
+    -ms-transform:rotate(-135deg); 	/* IE 9 */
+    -moz-transform:rotate(-135deg); 	/* Firefox */
+    -webkit-transform:rotate(-135deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-135deg); 	/* Opera */
 }
 .title {
     font-size:18px;
@@ -60,7 +88,6 @@
 .input-wrap input,.select-country{
     border:1px solid #EEE;
     text-indent: 15px;
-    /*color:#eee;placholder 颜色设置？*/
     width:100%;
     height:40px;
     border-radius: 45px;
@@ -89,12 +116,62 @@
     border:1px solid #2692ff;
     color:#2692ff;
 }
-.text-countryname,.text-countrycode{
-    line-height: 20px;
+.select-country{
+    position: relative;
 }
-.select-country span{
+.text-countryname,.text-countrycode{
+    height: 40px;
+    line-height: 40px;
+}
+.text-countrycode {
     display: inline-block;
-    line-height: 20px;
+    position: relative;
+    right:-140px;/*为什么要用负值？*/
+}
+.btn-open-selectcountry{
+    display: inline-block;
+    position: relative;
+    top:-3px;
+    right:-145px;
+    width:6px;
+    height:6px;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+    transform:rotate(-135deg);
+    -ms-transform:rotate(-135deg); 	/* IE 9 */
+    -moz-transform:rotate(-135deg); 	/* Firefox */
+    -webkit-transform:rotate(-135deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-135deg); 	/* Opera */
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    }
+
+.share-wrap {
+    width: 100%;
+    position: absolute;
+    left: 0; bottom: 0;
+}
+.third-sharelist{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.third-sharelist ul li{
+    list-style: none;
+    display: inline-block;
+    margin-right: 20px;
+}
+.third-sharelist svg{
+    width:40px;
+    height:40px;
+}
+.footer{
+    font-size: 12px;
+    margin-bottom:20px;
+    text-align: center;
 }
 
 </style>

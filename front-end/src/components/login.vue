@@ -2,28 +2,42 @@
     <div class="body-wrap">
         <!--手机快捷登录顶部-->
         <div class="header-wrap">
-            <a class="goback"></a>
-            <div class="title">手机快捷登录</div>
+            <a class="goback" @click="goback"></a>
+            <div class="title" v-if="showfast">手机快捷登录</div>
+            <div class="title" v-if="shownormal">账号登录</div>
         </div>
         <!--顶部结束  -->
         <!--手机登录模块  -->
         <form class="middle-wrap" method="post">
-            <ul class="input-wrap">
+            <!--手机快捷登录输入  -->
+            <ul class="input-wrap" v-show="showfast">
                 <li>
                     <div class="select-country">
                         <span class="text-countryname">中国大陆</span>
                         <span class="text-countrycode">+86</span>
-                        <span class="btn-open-selectcountry"></span>
-                    </div> <!--国家选择-->
+                        <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
+                    </div> 
                 </li>
                 <li><input type="tel" placeholder="手机号码" name="cell" required></li>
                 <li><input type="text" placeholder="动态密码" name="password" required></li>
             </ul>
+            <!--账号登录输入  -->
+            <ul class="input-wrap" v-show="shownormal">
+                <li><input type="text" placeholder="手机/邮箱/优酷土豆账号" name="account" required></li>
+                <li>
+                    <input type="text" placeholder="登录密码" name="password" required>
+                    <!-- <span class="forgetpassword">忘记密码</span> -->
+                </li>
+            </ul>
+            <!--按钮  -->
             <button type="submit" class="btn-login" value="登录">登 录</button>
             <div class="text-or">或</div>
-            <button type="button" class="btn-normallogin">账号登录</button>
+            <button type="button" class="btn-switchlogin" @click="normallogin" v-show="showfast">账号登录</button>
+            <button type="button" class="btn-switchlogin" @click="fastlogin" v-show="shownormal">手机快捷登录</button>
         </form>
         <!--手机登录模块结束  -->
+    
+        <!--footer  -->
         <div class="footer-wrap">
             <div class="share-wrap">
                 <div class="third-sharelist">
@@ -39,14 +53,150 @@
                 </div>
             </div>
         </div>
-    </div>
+        <!--国家选择组件 -->
+        <div class="countryselect" v-if="showcountry">
+            <div class="countryselect-title">国家地区</div>
+            <div class="countryselect-main">
+                <div class="countryselect-list">
+                    <ul>
+                        <li class="line">常用</li>
+                        <li>
+                            <span class="country-name">中国大陆</span>
+                            <span class="country-code">+86</span>
+                        </li>
+                        <li>
+                            <span class="country-name">中国台湾</span>
+                            <span class="country-code">+886</span>
+                        </li>
+                        <li>
+                            <span class="country-name">中国香港</span>
+                            <span class="country-code">+852</span>
+                        </li>
+                        <li>
+                            <span class="country-name">美国</span>
+                            <span class="country-code">+1</span>
+                        </li>
+                        <li>
+                            <span class="country-name">日本</span>
+                            <span class="country-code">+81</span>
+                        </li>
+                        <li class="line">A</li>
+                        <li>
+                            <span class="country-name">澳大利亚</span>
+                            <span class="country-code">+61</span>
+                        </li>
+                        <li>
+                            <span class="country-name">阿联酋</span>
+                            <span class="country-code">+971</span>
+                        </li>
+                        <li class="line">B</li>
+                        <li>
+                            <span class="country-name">巴基斯坦</span>
+                            <span class="country-code">+92</span>
+                        </li>
+                        <li class="line">D</li>
+                        <li>
+                            <span class="country-name">德国</span>
+                            <span class="country-code">+49</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="countryselect-cancle" @click="hideCountryPanel">取消</div>
+        </div>
+</div>
 </template>
 
 <script>
-
+export default{
+  data () {
+    return {
+      shownormal: false,
+      showfast: true,
+      showcountry: false
+    }
+  },
+  methods: {
+    goback () {
+      this.$router.go(-1)
+    },
+    normallogin () {
+      this.showfast = false
+      this.shownormal = true
+    },
+    fastlogin () {
+      this.showfast = true
+      this.shownormal = false
+    },
+    showCountryPanel () {
+      this.showcountry = true
+    },
+    hideCountryPanel () {
+      this.showcountry = false
+    }
+  }
+}
 </script>
 
 <style>
+/*国家选择*/
+.countryselect {
+    position:fixed;
+    left:0;
+    bottom:0;
+    height: 333px;
+    width:100%;
+    background-color: #fff;
+}
+.countryselect-title{
+    text-align: center;
+    font-size:1.2rem;
+    height: 48px;
+    line-height: 48px;
+    border-top: 1px solid #ccc;
+    color: #4E4E4E;
+}
+.countryselect-main {
+    height:233px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    border: 1px solid #ccc;
+}
+.countryselect-list {
+    position: relative;
+}
+.countryselect-list li{
+    height: 35px;
+    line-height: 35px;
+    padding-left:10px;
+    padding-right: 10px;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 1rem;
+}
+.country-name {
+    float:left;
+}
+.country-code {
+    float: right;
+    color:#4E4E4E;
+}
+.line {
+    background-color: #F0F0F0;
+    font-size: 12px !important;
+    color:#9a9a9a;
+    height: 19px !important; 
+    line-height: 19px !important;
+}
+
+.countryselect-cancle{
+    height: 48px;
+    line-height: 48px;
+    color:#9a9a9a;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/*国家选择*/
 .text-gray{
     color:#ccc;
 }
@@ -93,7 +243,7 @@
     border-radius: 45px;
     font-size: 14px;
 }
-.btn-login,.btn-normallogin{
+.btn-login,.btn-switchlogin{
     display: block;
     width:100%;
     height:45px;
@@ -111,7 +261,7 @@
     margin:10px 0px;
     font-size: 12px;
 }
-.btn-normallogin{
+.btn-switchlogin{
     background-color: #fff;
     border:1px solid #2692ff;
     color:#2692ff;
@@ -126,13 +276,13 @@
 .text-countrycode {
     display: inline-block;
     position: relative;
-    right:-140px;/*为什么要用负值？*/
+    right:-48%;
 }
-.btn-open-selectcountry{
+.btn-open-countrychoose{
     display: inline-block;
     position: relative;
     top:-3px;
-    right:-145px;
+    right:-50%;
     width:6px;
     height:6px;
     border-top: 2px solid #333;

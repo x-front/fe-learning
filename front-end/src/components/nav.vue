@@ -134,13 +134,13 @@ export default {
   list-style: none;
   display: inline-block;
   margin-top:12px;
-  margin-right:18px;
+  padding-right: 26px;
   padding-bottom: 8px;
   font-size: 18px;
 }
 
-#nav .current{
-  border-bottom:2px solid #06a7e1;
+#nav .current a{
+  border-bottom:2px solid #06a7e1; /*搞不定样式*/
 }
 </style>
 

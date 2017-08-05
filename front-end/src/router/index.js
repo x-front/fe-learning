@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
 import Login from '@/components/login' // 一定要首字母大写？有什么规则
+import Signin from '@/components/signin'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/login',  // 什么意思？
       name: 'login',
       component: Login
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      component: Signin
     }
   ]
 })

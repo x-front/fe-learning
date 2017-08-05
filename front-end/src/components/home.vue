@@ -39,7 +39,7 @@
     <!--头部结束-->
     <!--导航栏开始-->
     <!-- 导航栏开始 -->
-    <my-nav></my-nav>  
+    <my-nav></my-nav>
     <!-- 导航结束 -->
     <keep-alive> <!--啥意思-->
       <router-view></router-view>

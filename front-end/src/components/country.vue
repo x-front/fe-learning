@@ -1,5 +1,5 @@
 <template>
-<div class="countryselect" v-if="showcountry">
+<div class="countryselect">
     <div class="countryselect-title">国家地区</div>
     <div class="countryselect-main">
         <div class="countryselect-list">

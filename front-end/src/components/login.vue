@@ -16,11 +16,6 @@
                         <span class="text-countryname">中国大陆</span>
                         <span class="text-countrycode">+86</span>
                         <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
-                        <!--国家选择组件 -->
-                        <my-country></my-country>
-                        <!--<keep-alive> 啥意思
-                            <router-view></router-view>
-                        </keep-alive>-->
                     </div> 
                 </li>
                 <li><input type="tel" placeholder="手机号码" name="cell" required></li>
@@ -58,6 +53,8 @@
                 </div>
             </div>
         </div>
+        <!--国家选择组件 -->
+        <my-country v-if="showcountry"></my-country>
 </div>
 </template>
 
@@ -87,12 +84,9 @@ export default {
       this.showfast = true
       this.shownormal = false
     },
-    showCountryPanle () {
+    showCountryPanel () {
       console.log('hi')
       this.showcountry = true
-    },
-    hideCountryPanel () {
-      this.showcountry = false
     },
     signin () {
       this.$router.push({path: '/signin'})

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/home'
 import Login from '@/components/login' // 一定要首字母大写？有什么规则
 import Signin from '@/components/signin'
+import Content from '@/components/content'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/signin',
       name: 'signin',
       component: Signin
+    },
+    {
+      path: '/content',
+      name: 'content',
+      component: Content
     }
   ]
 })

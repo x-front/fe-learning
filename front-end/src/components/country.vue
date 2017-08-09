@@ -53,14 +53,9 @@
 <script>
 export default {
   name: 'my-country',
-  data () {
-    return {
-      showcountry: false
-    }
-  },
   methods: {
     hideCountryPanel () {
-      this.showcountry = false
+      this.showcountry = false //
     }
   }
 }

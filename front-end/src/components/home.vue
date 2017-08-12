@@ -88,7 +88,7 @@
     <!--右下角固定工具栏-->
     <div class="rsidebar">
       <ul>
-        <li><a ><i class="ico-gotop"></i></a></li>
+        <li><a @click="scrollTop"><i class="ico-gotop"></i></a></li>
         <li><a><i class="ico-user"></i></a></li> 
         <li><a><i class="ico-feedback"></i><span>反馈</span></a></li>
       </ul>
@@ -172,6 +172,12 @@ export default {
     },
     login () {
       this.$router.push({path: '/login'})
+    },
+    scrollTop () {
+      alert('hi')
+      this.scroll = document.body.scrollTop
+      console.log(this.scroll)
+      this.scroll = 0
     }
   }
 }

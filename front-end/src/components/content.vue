@@ -48,7 +48,7 @@
     height: 17px;
     background-position: 0 0;
 }
-.header-right{
+.contentheader-wrap .header-right{
     position: absolute;
     top:10px;
     right:15px;

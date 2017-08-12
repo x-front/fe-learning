@@ -69,7 +69,7 @@ export default {
     return {
       shownormal: false,
       showfast: true,
-      showcountry: false
+      countrystatus: false
     }
   },
   methods: {
@@ -86,7 +86,7 @@ export default {
     },
     showCountryPanel () {
       console.log('hi')
-      this.showcountry = true
+      this.countrystatus = true
     },
     signin () {
       this.$router.push({path: '/signin'})

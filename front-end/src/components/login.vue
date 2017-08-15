@@ -53,8 +53,8 @@
                 </div>
             </div>
         </div>
-        <!--国家选择组件 -->
-        <my-country :show="showcountry"></my-country>
+        <!--国家选择组件 ？show为false就是隐藏？-->
+        <my-country :show="showcountry"></my-country> 
 </div>
 </template>
 

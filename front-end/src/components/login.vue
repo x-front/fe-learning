@@ -69,9 +69,8 @@ export default {
     return {
       shownormal: false,
       showfast: true,
-      countrystatus: false,
       showcountry: {
-          status: false
+        status: false
       }
     }
   },

@@ -54,15 +54,8 @@
 export default {
   name: 'my-country',
   props: {
-      show: {
-          status: false
-      }
-  },
-  data () {
-    return {
-      status: {
-        show: false
-      }
+    show: {
+      status: false
     }
   },
   methods: {

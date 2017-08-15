@@ -54,7 +54,7 @@
             </div>
         </div>
         <!--国家选择组件 -->
-        <my-country v-if="showcountry"></my-country>
+        <my-country :show="showcountry"></my-country>
 </div>
 </template>
 
@@ -69,7 +69,10 @@ export default {
     return {
       shownormal: false,
       showfast: true,
-      countrystatus: false
+      countrystatus: false,
+      showcountry: {
+          status: false
+      }
     }
   },
   methods: {
@@ -85,8 +88,7 @@ export default {
       this.shownormal = false
     },
     showCountryPanel () {
-      console.log('hi')
-      this.countrystatus = true
+      this.showcountry.status = true
     },
     signin () {
       this.$router.push({path: '/signin'})

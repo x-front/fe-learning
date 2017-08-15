@@ -15,6 +15,14 @@
         </div>
         <button type="submit" class="btn-DownloadAPP">打开优酷APP，观看44分钟完整版</button>
     </div>
+    <!--视频详情  -->
+    <div class="videodetail">
+        <div class="videotitle">
+            <span class="only">独播</span>
+            <span class="title">春风十里不如你</span>
+            <span class="btn-opendetail"></span>
+        </div>
+    </div>
   </div>
 
 </template>
@@ -22,6 +30,34 @@
 
 </script>
 <style>
+/*视频详情*/
+.videotitle .only{
+    display: inline-block;
+    background-color: #FA533D;
+    padding:1px 4px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+.videotitle .title{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.videotitle .btn-opendetail {
+    display: inline-block;
+    position: relative;
+    top:-3px;
+    right:-50%;
+    width:6px;
+    height:6px;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+    transform:rotate(-135deg);
+    -ms-transform:rotate(-135deg); 	/* IE 9 */
+    -moz-transform:rotate(-135deg); 	/* Firefox */
+    -webkit-transform:rotate(-135deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-135deg); 	/* Opera */
+}
 /*顶部*/
 .contentheader-wrap{
     width: 100%;

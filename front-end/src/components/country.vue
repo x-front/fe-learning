@@ -1,5 +1,5 @@
 <template>
-<div class="countryselect" v-show="status.show" :show="status.show">
+<div class="countryselect" v-show="show.status">
     <div class="countryselect-title">国家地区</div>
     <div class="countryselect-main">
         <div class="countryselect-list">
@@ -53,6 +53,11 @@
 <script>
 export default {
   name: 'my-country',
+  props: {
+      show: {
+          status: false
+      }
+  },
   data () {
     return {
       status: {
@@ -62,7 +67,7 @@ export default {
   },
   methods: {
     hideCountryPanel () {
-      this.status.show = false //
+      this.show.status = false //
     }
   }
 }

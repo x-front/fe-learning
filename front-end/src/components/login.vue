@@ -14,7 +14,7 @@
                 <li>
                     <div class="select-country">
                         <span class="text-countryname">中国大陆</span>
-                        <span class="text-countrycode">+86</span>
+                        <span class="text-countrycode" v-on:changeCountryCode="getCountryCode" v-text="countrycode"></span>
                         <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
                     </div> 
                 </li>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <!--国家选择组件 ？show为false就是隐藏？-->
+        <!--国家选择组件 :show传给countyr.vue,-->
         <my-country :show="showcountry"></my-country> 
 </div>
 </template>
@@ -71,7 +71,8 @@ export default {
       showfast: true,
       showcountry: {
         status: false
-      }
+      },
+      countrycode: '+86'
     }
   },
   methods: {
@@ -91,6 +92,9 @@ export default {
     },
     signin () {
       this.$router.push({path: '/signin'})
+    },
+    getCountryCode (data) {
+      console.log(data)
     }
   }
 }

@@ -52,9 +52,9 @@
           <div class="p-taglt">
             <i class="ico-isvip"></i>
           </div>
-          <div class="thumb-pic">
+          <div class="thumb-pic" @click="goContent">
             <img :src="pinfo.src" class="thumb-real-pic">
-            <a href="http://m.youku.com" class="p-link"></a>
+            <!--<a href="http://m.youku.com" class="p-link"></a>-->
           </div>
           <div class="p-metadata">
               <div class="p-title">{{ pinfo.title }}</div>
@@ -70,7 +70,7 @@
       <!--幻灯片结束-->
       <!--推荐视频开始-->
       <div class="v-recommend">
-        <div class="v-item" v-for="item in vinfo" :key="item">
+        <div class="v-item" v-for="item in vinfo" :key="item" @click="goContent">
           <img :src="item.src">
           <div class="v-info">
             <div class="v-title">{{ item.title }}</div>
@@ -86,23 +86,20 @@
       <!--推荐视频结束-->
     </div>
     <!--右下角固定工具栏-->
-    <div class="rsidebar">
-      <ul>
-        <li><a @click="scrollTop"><i class="ico-gotop"></i></a></li>
-        <li><a><i class="ico-user"></i></a></li> 
-        <li><a><i class="ico-feedback"></i><span>反馈</span></a></li>
-      </ul>
-    </div>
+    <back-top :visibleHeight="50" :rate="6"></back-top>
+
   </div>
 </div>
 </template>
 
 <script>
 import nav from './nav'
+import backtop from './BackTop'
 export default {
   name: 'app',
   components: {
-    MyNav: nav
+    MyNav: nav,
+    BackTop:backtop
   },
   data () {
     return {
@@ -173,11 +170,8 @@ export default {
     login () {
       this.$router.push({path: '/login'})
     },
-    scrollTop () {
-      alert('hi')
-      this.scroll = document.body.scrollTop
-      console.log(this.scroll)
-      this.scroll = 0
+    goContent () {
+      this.$router.push({path: '/content'})
     }
   }
 }
@@ -283,6 +277,8 @@ a {
 
 /*header*/
 .header {
+  position:sticky;
+  top:0;
   width:100%;
   height:40px;
   background-color: #f6f6f6;
@@ -299,6 +295,10 @@ a {
 
 .handle {
   display: inline-block;
+}
+
+.yk-center {
+  cursor: pointer;
 }
 
 /*搜索栏*/

@@ -8,26 +8,64 @@
             <span class="search_icon"></span>
             <span class="user_icon"></span>
         </div>
+        
     </div>
     <!--播放器  -->
     <div class="player">
         <div class="player-box">
+            <my-video :sources="video.sources" :options="video.options"></my-video>
         </div>
-        <button type="submit" class="btn-DownloadAPP">打开优酷APP，观看44分钟完整版</button>
+        <button type="submit" class="btn-DownloadAPP">
+            <a href="http://down2.uc.cn/youku/down.php?spm=a2hmb.20008760.m_221044.5~5~5~5~5~5~P~A&pub=ab235fdcb823d83f">打开优酷APP，流畅到起飞 </a>
+        </button>
     </div>
     <!--视频详情  -->
     <div class="videodetail">
         <div class="videotitle">
             <span class="only">独播</span>
-            <span class="title">春风十里不如你</span>
+            <span class="title">Big Buck Bunny</span>
             <span class="btn-opendetail"></span>
         </div>
+        <div class="video-score">
+            <span class="score">9.0分</span>
+            <span class="playnum">1.2万亿次播放</span>
+        </div>
+        <!--
+        <div class="btn-tool">
+            <div class="fl">
+                <button class="videoQuality">高清></button>
+            </div>
+            <div class="fr">
+
+            </div>
+        </div>
+        -->
     </div>
   </div>
 
 </template>
 <script>
-
+import myVideo from 'vue-video'
+export default {
+    data () {
+        return {
+            video: {
+                sources: [{
+                    src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+                    type: 'video/mp4'
+                }],
+                options: {
+                    autoplay: true,
+                    volume: 0.6,
+                    poster: 'http://covteam.u.qiniudn.com/poster.png'
+                }
+            }
+        }
+    },
+    components: {
+        myVideo
+    }
+}
 </script>
 <style>
 /*视频详情*/
@@ -38,6 +76,7 @@
     border-radius: 4px;
     color: #fff;
     font-size: 14px;
+    margin-left:10px;
 }
 .videotitle .title{
     font-size: 1.2rem;
@@ -97,7 +136,7 @@
     margin-left: 5px;
 }
 .player-box{
-    height:200px;
+    height:210px;
     width: 100%;
     background-color:black;
 }
@@ -113,5 +152,19 @@
     color:#2692ff;
 }
 /*播放器*/
+/*视频信息*/
+.video-score{
+    font-size:1rem;
+    margin-left:10px;
+    margin-top:10px;
+}
+.score {
+    color:#FA533D;
+}
+.playnum{
+    color:#999;
+    margin-left: 10px;
+}
+
 </style>
 

@@ -4,6 +4,7 @@ import Home from '@/components/home'
 import Login from '@/components/login' // 一定要首字母大写？有什么规则
 import Signin from '@/components/signin'
 import Content from '@/components/content'
+import BackTop from '@/components/backtop'
 
 Vue.use(Router)
 
@@ -15,7 +16,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/login',  // 什么意思？
+      path: '/login',
       name: 'login',
       component: Login
     },
@@ -28,6 +29,11 @@ export default new Router({
       path: '/content',
       name: 'content',
       component: Content
+    },
+    {
+      path: './backtop',
+      name: 'backtop',
+      component: BackTop
     }
   ]
 })

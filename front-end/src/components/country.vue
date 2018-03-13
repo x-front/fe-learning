@@ -11,7 +11,7 @@
                 </li>
                 <li>
                     <span class="country-name">中国台湾</span>
-                    <span class="country-code">+886</span>
+                    <span class="country-code" @click="sendCountryCode">+886</span>
                 </li>
                 <li>
                     <span class="country-name">中国香港</span>
@@ -61,6 +61,9 @@ export default {
   methods: {
     hideCountryPanel () {
       this.show.status = false //
+    },
+    sendCountryCode () {
+      this.$emit('changeCountryCode', '+886')
     }
   }
 }

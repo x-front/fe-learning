@@ -61,7 +61,7 @@
               <div class="p-desc">
                 <span class="p-check">{{ pinfo.check }}</span>
                 <i class="ico-stat-play"></i>
-                <span class="p-num">{{ pinfo.playnum }}</span>
+                <span class="p-num">{{ playtimes }}</span>
                 <i class="ico-stat-comment"></i>
                 <span class="p-num">{{ pinfo.commentnum }}</span>
               </div>
@@ -77,7 +77,7 @@
             <div class="v-desc">
               <span class="v-check">{{ item.check }}</span>
               <i class="ico-stat-play"></i>
-              <span class="v-num">{{ item.playnum }}</span>
+              <span class="v-num">{{ playtimes }}</span>
               <i class="ico-stat-comment"></i>
               <span class="v-num">{{ item.commentnum }}</span>
             </div>
@@ -95,6 +95,7 @@
 <script>
 import nav from './nav'
 import backtop from './BackTop'
+import axios from 'axios'
 export default {
   name: 'app',
   components: {
@@ -103,7 +104,7 @@ export default {
   },
   data () {
     return {
-      pinfo: {
+      pinfobak: {
         src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
         title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
         playnum: '3,718万',
@@ -111,7 +112,7 @@ export default {
         videotime: '97:59',
         check: '更新至46'
       },
-      vinfo: [
+      vinfobak: [
         {
           src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
           title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
@@ -160,8 +161,21 @@ export default {
           videotime: '97:59',
           check: '更新至46'
         }
-      ]
+      ],
+      pinfo:{},
+      vinfo:{}
     }
+  },
+  mounted () {
+    axios.get('https://www.easy-mock.com/mock/5aa71a287a217a5f4903bd7a/myouku/home')
+    .then(response=>{
+        this.pinfo = response.data.pinfo;
+        this.vinfo = response.data.vinfo;
+    })
+    .catch(error=>{
+        console.log(error);
+        alert('网络错误，不能访问');
+    })
   },
   methods: {
     search () {
@@ -173,6 +187,9 @@ export default {
     goContent () {
       this.$router.push({path: '/content'})
     }
+  },
+  computed: {
+      playtimes : this.pinfo.playnum + '万'
   }
 }
 

@@ -7,9 +7,8 @@
         <div class="contentheader-right">
             <span class="search_icon"></span>
             <span class="user_icon"></span>
-        </div>
-        
-    </div>
+        </div> 
+  </div>
     <!--播放器  -->
     <div class="player">
         <div class="player-box">

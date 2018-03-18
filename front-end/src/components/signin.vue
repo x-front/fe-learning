@@ -12,8 +12,10 @@
                 <li>
                     <div class="select-country">
                         <span class="text-countryname">中国大陆</span>
-                        <span class="text-countrycode">+86</span>
-                        <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
+                        <div class="countrycode-wrap rs">
+                            <span class="text-countrycode">+86</span>
+                            <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
+                        </div>
                     </div> 
                 </li>
                 <li><input type="tel" placeholder="手机号码" name="cell" required></li>
@@ -126,23 +128,8 @@ export default {
     border:1px solid #2692ff;
     color:#2692ff;
 }
-.select-country{
-    position: relative;
-}
-.text-countryname,.text-countrycode{
-    height: 40px;
-    line-height: 40px;
-}
-.text-countrycode {
-    display: inline-block;
-    position: relative;
-    right:-48%;
-}
 .btn-open-countrychoose{
     display: inline-block;
-    position: relative;
-    top:-3px;
-    right:-50%;
     width:6px;
     height:6px;
     border-top: 2px solid #333;

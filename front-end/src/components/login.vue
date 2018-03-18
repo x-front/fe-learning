@@ -14,8 +14,10 @@
                 <li>
                     <div class="select-country">
                         <span class="text-countryname">中国大陆</span>
-                        <span class="text-countrycode" v-on:changeCountryCode="getCountryCode" v-text="countrycode"></span>
-                        <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
+                        <div class="countrycode-wrap rs">
+                          <span class="text-countrycode" v-on:changeCountryCode="getCountryCode" v-text="countrycode"></span>
+                          <span class="btn-open-countrychoose" @click="showCountryPanel"></span>
+                        </div>
                     </div> 
                 </li>
                 <li><input type="tel" placeholder="手机号码" name="cell" required></li>
@@ -172,24 +174,24 @@ export default {
     color:#2692ff;
 }
 .select-country{
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .text-countryname,.text-countrycode{
     height: 40px;
     line-height: 40px;
 }
-.text-countrycode {
-    display: inline-block;
-    position: relative;
-    right:-48%;
+.countrycode-wrap{
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
 }
 .btn-open-countrychoose{
     display: inline-block;
-    position: relative;
-    top:-3px;
-    right:-50%;
     width:6px;
     height:6px;
+    margin-left:5px;
     border-top: 2px solid #333;
     border-left: 2px solid #333;
     transform:rotate(-135deg);

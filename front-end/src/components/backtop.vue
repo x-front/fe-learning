@@ -2,7 +2,7 @@
   <div name="backtop" class="rsidebar" v-show="visible">
       <ul>
         <li><a @click="goTop"><i class="ico-gotop"></i></a></li>
-        <li><a><i class="ico-user"></i></a></li> 
+        <li><a @click="login"><i class="ico-user"></i></a></li> 
         <li><a><i class="ico-feedback"></i></a></li>
       </ul>
     </div>
@@ -54,6 +54,9 @@ methods:{
                 clearInterval(this.interval)
             }
         },13)
+    },
+    login() {
+        this.$router.push({path:'/login'})
     }
 }
 }

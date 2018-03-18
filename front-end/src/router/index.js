@@ -5,6 +5,10 @@ import Login from '@/components/login' // 一定要首字母大写？有什么�
 import Signin from '@/components/signin'
 import Content from '@/components/content'
 import BackTop from '@/components/backtop'
+import ContentDetail from '@/components/contentdetail'
+import ChooseVideo from '@/components/choosevideo'
+import ContentComment from '@/components/contentcomment'
+import ContentFooter from '@/components/contentfooter'
 
 Vue.use(Router)
 
@@ -34,6 +38,26 @@ export default new Router({
       path: './backtop',
       name: 'backtop',
       component: BackTop
+    },
+    {
+      path: './contentdetail',
+      name: 'contentdetail',
+      component: ContentDetail
+    },
+    {
+      path: './choosevideo',
+      name: 'choosevideo',
+      component: ChooseVideo
+    },
+    {
+      path: './contentcomment',
+      name: 'contentcomment',
+      component: ContentComment
+    },
+    {
+      path: './contentfooter',
+      name: 'contentfooter',
+      component: ContentFooter
     }
   ]
 })

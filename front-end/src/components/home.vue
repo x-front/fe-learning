@@ -52,7 +52,7 @@
           <div class="p-taglt">
             <i class="ico-isvip"></i>
           </div>
-          <div class="thumb-pic" @click="goContent">
+          <div class="thumb-pic" @click="goContentPic">
             <img :src="pinfo.src" class="thumb-real-pic">
             <!--<a href="http://m.youku.com" class="p-link"></a>-->
           </div>
@@ -61,7 +61,7 @@
               <div class="p-desc">
                 <span class="p-check">{{ pinfo.check }}</span>
                 <i class="ico-stat-play"></i>
-                <span class="p-num">{{ playtimes }}</span>
+                <span class="p-num">播放{{ pinfo.playnum }}万</span>
                 <i class="ico-stat-comment"></i>
                 <span class="p-num">{{ pinfo.commentnum }}</span>
               </div>
@@ -70,16 +70,16 @@
       <!--幻灯片结束-->
       <!--推荐视频开始-->
       <div class="v-recommend">
-        <div class="v-item" v-for="item in vinfo" :key="item" @click="goContent">
+        <div class="v-item" v-for="(item,index) in vinfo" :key="item" @click="goContentRec(index)">
           <img :src="item.src">
           <div class="v-info">
             <div class="v-title">{{ item.title }}</div>
             <div class="v-desc">
               <span class="v-check">{{ item.check }}</span>
               <i class="ico-stat-play"></i>
-              <span class="v-num">{{ item.playnum }}</span>
+              <span class="v-num">播放{{ item.playnum }}万</span>
               <i class="ico-stat-comment"></i>
-              <span class="v-num">{{ item.commentnum }}</span>
+              <span class="v-num">评论{{ item.commentnum }}</span>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
         <div class="tv-head">
           <div class="tv-title">电视剧</div>
         </div>
-        <div class="v-item" v-for="item in tvinfo" :key="item" @click="goContent">
+        <div class="v-item" v-for="(item,index) in tvinfo" :key="item" @click="goContentTv(index)">
           <img :src="item.src">
           <div class="v-info">
             <div class="v-title">{{ item.title }}</div>
@@ -146,10 +146,16 @@ export default {
     login () {
       this.$router.push({path: '/login'})
     },
-    goContent () {
+    goContentPic () {
       this.$router.push({path: '/content'})
+    },
+    goContentRec (index) {
+      this.$router.push({path: '/content',query:{id:index,type:'rec'}})
+    },
+    goContentTv (index) {
+      this.$router.push({path: '/content',query:{id:index,type:'tv'}})
     }
-  },
+  }
 }
 
 </script>

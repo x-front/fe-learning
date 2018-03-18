@@ -2,9 +2,9 @@
   <!--顶部  -->
   <div class="content-wrap">
     <div class="contentheader-wrap">
-        <span class="menu_icon"></span>
-        <span class="yk-logo_icon"></span>
-        <div class="header-right">
+        <div class="menu-wrap"><span class="menu_icon"></span></div>
+        <div><span class="yk-logo_icon"></span></div>
+        <div class="contentheader-right">
             <span class="search_icon"></span>
             <span class="user_icon"></span>
         </div>
@@ -24,7 +24,7 @@
         <div class="videotitle">
             <span class="only">独播</span>
             <span class="title">Big Buck Bunny</span>
-            <span class="btn-opendetail"></span>
+            <!--<span class="btn-opendetail"></span>-->
         </div>
         <div class="video-score">
             <span class="score">9.0分</span>
@@ -99,11 +99,11 @@ export default {
 }
 /*顶部*/
 .contentheader-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 44px;
-    padding:10px 15px 0px 15px;
-    text-align: center;
-    line-height: 44px;
 }
 [class*='_icon']{
     background: url(http://m.youku.com/video/images/youkunav.png?ver=1501124161113) no-repeat;
@@ -112,10 +112,12 @@ export default {
     width:22px;
     height: 20px;
 }
-.menu_icon {
+.menu-wrap {
     position: absolute;
-    top:20px;
-    left:15px;
+    left:10px;
+    top:10px;
+}
+.menu_icon {
     background-position: 0 -30px;
 }
 .yk-logo_icon {
@@ -123,11 +125,13 @@ export default {
     height: 17px;
     background-position: 0 0;
 }
-.contentheader-wrap .header-right{
+
+.contentheader-right{
     position: absolute;
     top:10px;
-    right:15px;
+    right: 10px;
 }
+
 .search_icon {
     background-position: 0 -58px;
 }
@@ -136,7 +140,7 @@ export default {
     margin-left: 5px;
 }
 .player-box{
-    height:210px;
+    height:100%;
     width: 100%;
     background-color:black;
 }

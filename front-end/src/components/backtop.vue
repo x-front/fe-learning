@@ -3,7 +3,7 @@
       <ul>
         <li><a @click="goTop"><i class="ico-gotop"></i></a></li>
         <li><a><i class="ico-user"></i></a></li> 
-        <li><a><i class="ico-feedback"></i><span>反馈</span></a></li>
+        <li><a><i class="ico-feedback"></i></a></li>
       </ul>
     </div>
 </template>

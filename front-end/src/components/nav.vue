@@ -17,7 +17,7 @@ export default {
       navlist: [
         {
           txt: '首页',
-          href: '//www.youku.com'
+          href: '#'
         },
         {
           txt: '会员',
@@ -25,71 +25,71 @@ export default {
         },
         {
           txt: '直播',
-          href: '//live.youku.com/'
+          href: '#'
         },
         {
           txt: '剧集',
-          href: '//tv.youku.com/'
+          href: '#'
         },
         {
           txt: '电影',
-          href: '//movie.youku.com/'
+          href: '#'
         },
         {
           txt: '综艺',
-          href: '//zy.youku.com/'
+          href: '#'
         },
         {
           txt: '音乐',
-          href: '//music.youku.com/'
+          href: '#'
         },
         {
           txt: '动漫',
-          href: '//comic.youku.com/'
+          href: '#'
         },
         {
           txt: '少儿',
-          href: '//child.youku.com/'
+          href: '#'
         },
         {
           txt: '资讯',
-          href: '//news.youku.com/'
+          href: '#'
         },
         {
           txt: '文化',
-          href: '//culture.youku.com/'
+          href: '#'
         },
         {
           txt: '纪实',
-          href: '//jishi.youku.com/'
+          href: '#'
         },
         {
           txt: '财经',
-          href: '//finance.youku.com/'
+          href: '#'
         },
         {
           txt: '体育',
-          href: '//sports.youku.com/'
+          href: '#'
         },
         {
           txt: '汽车',
-          href: '//auto.youku.com/'
+          href: '#'
         },
         {
           txt: '科技',
-          href: '//tech.youku.com/'
+          href: '#'
         },
         {
           txt: '游戏',
-          href: '//game.youku.com/'
+          href: '#'
         },
         {
           txt: '搞笑',
-          href: '//fun.youku.com/'
+          href: '#'
         },
         {
           txt: '旅游',
-          href: '//travel.youku.com/'
+          href: '#'
         },
         {
           txt: '时尚',

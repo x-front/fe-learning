@@ -77,14 +77,32 @@
             <div class="v-desc">
               <span class="v-check">{{ item.check }}</span>
               <i class="ico-stat-play"></i>
-              <span class="v-num">{{ playtimes }}</span>
+              <span class="v-num">{{ item.playnum }}</span>
               <i class="ico-stat-comment"></i>
               <span class="v-num">{{ item.commentnum }}</span>
             </div>
           </div>
         </div>
-      <!--推荐视频结束-->
     </div>
+    <!--推荐视频结束-->
+    <!--电视剧开始-->
+      <div class="tv-ykbox">
+        <div class="tv-head">
+          <div class="tv-title">电视剧</div>
+        </div>
+        <div class="v-item" v-for="item in tvinfo" :key="item" @click="goContent">
+          <img :src="item.src">
+          <div class="v-info">
+            <div class="v-title">{{ item.title }}</div>
+            <div class="v-desc">
+              <span class="v-check">{{ item.check }}</span>
+              <i class="ico-stat-play"></i>
+              <span class="v-num">{{ item.desc }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--电视剧结束-->
     <!--右下角固定工具栏-->
     <back-top :visibleHeight="50" :rate="6"></back-top>
 
@@ -104,66 +122,9 @@ export default {
   },
   data () {
     return {
-      pinfobak: {
-        src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-        title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-        playnum: '3,718万',
-        commentnum: '3,146',
-        videotime: '97:59',
-        check: '更新至46'
-      },
-      vinfobak: [
-        {
-          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-          playnum: '3,718万',
-          commentnum: '3,146',
-          videotime: '97:59',
-          check: '更新至46'
-        },
-        {
-          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-          playnum: '3,718万',
-          commentnum: '3,146',
-          videotime: '97:59',
-          check: '更新至46'
-        },
-        {
-          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-          playnum: '3,718万',
-          commentnum: '3,146',
-          videotime: '97:59',
-          check: '更新至46'
-        },
-        {
-          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-          playnum: '3,718万',
-          commentnum: '3,146',
-          videotime: '97:59',
-          check: '更新至46'
-        },
-        {
-          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-          playnum: '3,718万',
-          commentnum: '3,146',
-          videotime: '97:59',
-          check: '更新至46'
-        },
-        {
-          src: 'http://r1.ykimg.com/0515000059609933ADC0AE0E60013AAE',
-          title: '[极限挑战3]沙溢被孙红雷逼疯 遭安吉嫌弃',
-          playnum: '3,718万',
-          commentnum: '3,146',
-          videotime: '97:59',
-          check: '更新至46'
-        }
-      ],
       pinfo:{},
-      vinfo:{}
+      vinfo:{},
+      tvinfo:{}
     }
   },
   mounted () {
@@ -171,6 +132,7 @@ export default {
     .then(response=>{
         this.pinfo = response.data.pinfo;
         this.vinfo = response.data.vinfo;
+        this.tvinfo = response.data.tvinfo;
     })
     .catch(error=>{
         console.log(error);
@@ -188,9 +150,6 @@ export default {
       this.$router.push({path: '/content'})
     }
   },
-  computed: {
-      playtimes : this.pinfo.playnum + '万'
-  }
 }
 
 </script>
@@ -324,11 +283,11 @@ a {
 }
 
 .input-search{
+  border-radius: 5px;
   width: 79%;
   float:left;
   height: 28px;
   border:1px solid #a0a0a0;
-  border-right:0px;
 }
 
 .btn-search {
@@ -339,6 +298,7 @@ a {
   background-color: #2E8EE2;
   color:#fff;
   font-size:14px;
+  border-radius: 5px;
 }
 
 /*大图*/
@@ -414,8 +374,8 @@ a {
 }
 
 .v-info{
-  background-color: #ddd;
-  margin-top:-4px;
+  background-color: #f5f5f5;
+  margin-top:-5px;
   padding: 4px;
 }
 
@@ -437,6 +397,10 @@ a {
 .v-num{
   font-size: 12px;
   color:#909090;
+}
+
+.tv-title{
+  margin:10px;
 }
 
 /*右下角固定工具栏*/

@@ -1,6 +1,6 @@
 <template>
   <ul id="nav">
-      <li v-for="(item,index) in navlist" :class="{ current: index === currentselect } " :key="item" @click="current(index)">
+      <li v-for="(item,index) in navlist" :class="{ current: index === currentselect } " :key="index" @click="current(index)">
         <!-- <li v-for="(item,index) in navlist"  active-class="current" :key="item"> -->
         <router-link  :to="item.href">
           {{ item.txt }}

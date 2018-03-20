@@ -70,7 +70,7 @@
       <!--幻灯片结束-->
       <!--推荐视频开始-->
       <div class="v-recommend">
-        <div class="v-item" v-for="(item,index) in vinfo" :key="item" @click="goContentRec(index)">
+        <div class="v-item" v-for="(item,index) in vinfo" :key="index" @click="goContentRec(index)">
           <img :src="item.src">
           <div class="v-info">
             <div class="v-title">{{ item.title }}</div>
@@ -90,7 +90,7 @@
         <div class="tv-head">
           <div class="tv-title">电视剧</div>
         </div>
-        <div class="v-item" v-for="(item,index) in tvinfo" :key="item" @click="goContentTv(index)">
+        <div class="v-item" v-for="(item,index) in tvinfo" :key="index" @click="goContentTv(index)">
           <img :src="item.src">
           <div class="v-info">
             <div class="v-title">{{ item.title }}</div>
@@ -109,7 +109,6 @@
   </div>
 </div>
 </template>
-
 <script>
 import nav from './nav'
 import backtop from './BackTop'
